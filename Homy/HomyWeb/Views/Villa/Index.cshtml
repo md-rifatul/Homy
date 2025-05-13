@@ -8,26 +8,28 @@
 			</div>
 		</div>
 	</div>
+	<div class="card-body border p-4">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Sqft</th>
+					<th>Occupancy</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var obj in Model)
+				{
+					<tr>
+						<th>@obj.Name</th>
+						<th>@obj.Price</th>
+						<th>@obj.Sqft</th>
+						<th>@obj.Occupancy</th>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
 </div>
 
-<table class="table table-bordered table-striped">
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>Price</th>
-			<th>Sqft</th>
-			<th>Occupancy</th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach(var obj in Model)
-		{
-			<tr>
-			<th>@obj.Name</th>
-			<th>@obj.Price</th>
-			<th>@obj.Sqft</th>
-			<th>@obj.Occupancy</th>
-			</tr>
-		}
-	</tbody>
-</table>
