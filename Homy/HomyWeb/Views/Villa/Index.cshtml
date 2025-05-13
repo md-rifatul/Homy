@@ -14,10 +14,12 @@
 	<tbody>
 		@foreach(var obj in Model)
 		{
+			<tr>
 			<th>@obj.Name</th>
 			<th>@obj.Price</th>
 			<th>@obj.Sqft</th>
 			<th>@obj.Occupancy</th>
+			</tr>
 		}
 	</tbody>
 </table>
