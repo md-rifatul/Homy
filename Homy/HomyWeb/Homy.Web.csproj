@@ -18,4 +18,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Homy.Infrastructure\Homy.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
