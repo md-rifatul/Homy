@@ -21,7 +21,7 @@ jobs:
         dotnet-version: '7.0.x' # Change if you're using another version
 
     - name: Restore dependencies
-      run: dotnet restore Homy.sln
+      run: dotnet restore Homy/Homy.sln
 
     - name: Build
       run: dotnet build Homy.sln --configuration Release --no-restore
