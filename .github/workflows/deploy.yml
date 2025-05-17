@@ -1,3 +1,4 @@
+# .github/workflows/dotnet.yml
 name: .NET Core CI
 
 on:
@@ -8,23 +9,22 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
 
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '8.0.x' # or 7.0.x / 6.0.x as per your project
+        dotnet-version: '7.0.x' # Change if you're using another version
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore Homy.sln
 
     - name: Build
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build Homy.sln --configuration Release --no-restore
 
-    - name: Run tests
-      run: dotnet test --no-build --verbosity normal
+    - name: Test
+      run: dotnet test Homy.sln --no-build --verbosity normal
