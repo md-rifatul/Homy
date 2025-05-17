@@ -14,17 +14,17 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
+    
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '7.0.x' # Change if you're using another version
-
+        dotnet-version: '7.0.x' # অথবা তুমি যে ভার্সন ইউজ করছো
+    
     - name: Restore dependencies
       run: dotnet restore Homy/Homy.sln
-
+    
     - name: Build
-      run: dotnet build Homy.sln --configuration Release --no-restore
-
+      run: dotnet build Homy/Homy.sln --configuration Release --no-restore
+    
     - name: Test
-      run: dotnet test Homy.sln --no-build --verbosity normal
+      run: dotnet test Homy/Homy.sln --no-build --verbosity normal
