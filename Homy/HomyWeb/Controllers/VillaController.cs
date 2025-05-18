@@ -1,4 +1,5 @@
-﻿using Homy.Infrastructure.Data;
+﻿using Homy.Domain.Entities;
+using Homy.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +19,18 @@ namespace Homy.Web.Controllers
         }
         public IActionResult Create()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Villa obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Villas.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
             return View();
         }
     }
