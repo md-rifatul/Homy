@@ -16,5 +16,9 @@ namespace Homy.Web.Controllers
             var villa = await _db.Villas.ToListAsync();
             return View(villa);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
