@@ -46,5 +46,16 @@ namespace Homy.Web.Controllers
             }
             return View(villa);
         }
+        [HttpPost]
+        public IActionResult Update(Villa obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Villas.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
     }
 }
