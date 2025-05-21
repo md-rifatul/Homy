@@ -37,5 +37,14 @@ namespace Homy.Web.Controllers
             }
             return View();
         }
+        public IActionResult Update(int VillaId)
+        {
+            var villa = _db.Villas.FirstOrDefault(u => u.Id == VillaId);
+            if (villa == null)
+            {
+                return NotFound();
+            }
+            return View(villa);
+        }
     }
 }
