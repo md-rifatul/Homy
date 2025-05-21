@@ -62,20 +62,21 @@ namespace Homy.Web.Controllers
             var villa = _db.Villas.FirstOrDefault(u => u.Id == VillaId);
             if (villa == null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Error", "Home");
             }
             return View(villa);
         }
         [HttpPost]
         public IActionResult Remove(Villa obj)
         {
-            if (ModelState.IsValid)
+            var villa = _db.Villas.FirstOrDefault(u => u.Id == obj.Id);
+            if (villa != null)
             {
-                _db.Villas.Remove(obj);
+                _db.Villas.Remove(villa);
                 _db.SaveChanges();
                 return RedirectToAction("Index", "Villa");
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Error", "Home");
 
         }
     }
