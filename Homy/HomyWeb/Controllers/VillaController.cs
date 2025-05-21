@@ -33,6 +33,7 @@ namespace Homy.Web.Controllers
             {
                 _db.Villas.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "The vill has been created successfully";
                 return RedirectToAction("Index");
             }
             return View();
@@ -53,8 +54,10 @@ namespace Homy.Web.Controllers
             {
                 _db.Villas.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "The vill has been update successfully";
                 return RedirectToAction("Index", "Villa");
             }
+            TempData["error"] = "The villa could not been update";
             return View();
         }
         public IActionResult Remove(int VillaId)
@@ -74,8 +77,10 @@ namespace Homy.Web.Controllers
             {
                 _db.Villas.Remove(villa);
                 _db.SaveChanges();
+                TempData["success"] = "The vill has been deleted successfully";
                 return RedirectToAction("Index", "Villa");
             }
+            TempData["error"] = "The villa could not been deleted";
             return RedirectToAction("Error", "Home");
 
         }
