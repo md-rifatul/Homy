@@ -42,7 +42,7 @@ namespace Homy.Web.Controllers
             var villa = _db.Villas.FirstOrDefault(u => u.Id == VillaId);
             if (villa == null)
             {
-                return NotFound();
+                return RedirectToAction("Error", "Home");
             }
             return View(villa);
         }
