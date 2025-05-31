@@ -34,17 +34,30 @@ namespace Homy.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(VillaNumber obj)
+        public IActionResult Create(VillaNumberVM obj)
         {
+            bool roonNumberExists = _db.villaNumbers.Any(u => u.Villa_Number == obj.VillaNumber.Villa_Number);
+
             ModelState.Remove("Villa");
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && !roonNumberExists)
             {
-                _db.villaNumbers.Add(obj);
+                _db.villaNumbers.Add(obj.VillaNumber);
                 _db.SaveChanges();
                 TempData["success"] = "The vill number has been created successfully";
                 return RedirectToAction("Index");
             }
-            return View();
+            if (roonNumberExists)
+            {
+                TempData["error"] = "The villa Number already exists";
+            }
+
+            obj.VillaList = _db.Villas.ToList().Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            });
+
+            return View(obj);
         }
         public IActionResult Update(int VillaId)
         {
