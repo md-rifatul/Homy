@@ -16,7 +16,7 @@ namespace Homy.Web.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var villaNumber = await _db.villaNumbers.ToListAsync();
+            var villaNumber = await _db.villaNumbers.Include(u => u.Villa).ToListAsync();
             return View(villaNumber);
         }
         public IActionResult Create()
